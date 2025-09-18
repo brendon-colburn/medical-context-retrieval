@@ -1,0 +1,54 @@
+{
+  "statistics": {
+    "total_queries": 15,
+    "wins": 3,
+    "win_rate_pct": 20.0,
+    "avg_improvement_pct": -0.5153246468102172,
+    "median_improvement_pct": -0.6619954924184472,
+    "std_improvement_pct": 1.33316224154992,
+    "avg_top3_improvement_pct": -0.5469300867464956,
+    "median_top3_improvement_pct": -0.7911350336479005,
+    "positive_improvements": 3,
+    "negative_improvements": 12,
+    "max_improvement_pct": 3.459278506204765,
+    "min_improvement_pct": -2.1033141419700674
+  },
+  "improvements": [
+    3.459278506204765,
+    -1.3533861093699056,
+    -0.5989637680523718,
+    -0.3686429785872346,
+    -0.3117326189578318,
+    0.1816321841077212,
+    -1.108819788337147,
+    1.226264533510693,
+    -0.502479794804294,
+    -0.6619954924184472,
+    -1.5446168368923743,
+    -0.8983841689127093,
+    -1.9149459233490773,
+    -2.1033141419700674,
+    -1.2297633043249772
+  ],
+  "test_queries": [
+    "What are the symptoms of diabetes?",
+    "How is hypertension diagnosed?",
+    "What medications are used for heart disease?",
+    "What are the risk factors for stroke?",
+    "How do you prevent cardiovascular disease?",
+    "What are the side effects of chemotherapy?",
+    "How is depression treated in elderly patients?",
+    "What laboratory tests are needed for liver function?",
+    "What are the current USPSTF recommendations for breast cancer screening?",
+    "How should asthma be managed in children?",
+    "What are the guidelines for colorectal cancer screening?",
+    "What are the treatment options for Hodgkin lymphoma?",
+    "How do you diagnose chronic kidney disease?",
+    "What are the contraindications for aspirin therapy?",
+    "How do you manage acute myocardial infarction?"
+  ],
+  "evaluation_summary": {
+    "conclusion": "Baseline",
+    "confidence": "Low"
+  }
+}
