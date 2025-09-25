@@ -1,0 +1,13 @@
+beautifulsoup4
+requests
+pypdf
+scikit-learn
+faiss-cpu
+azure-cosmos
+azure-identity
+openai
+python-dotenv
+aiohttp
+numpy
+scipy
+tqdm
