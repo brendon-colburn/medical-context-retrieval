@@ -1,0 +1,128 @@
+{
+  "demo_queries": [
+    {
+      "id": 1,
+      "category": "Cancer Screening",
+      "query": "What are the current USPSTF recommendations for breast cancer screening?",
+      "description": "Demonstrates retrieval of preventive care guidelines",
+      "expected_sources": ["USPSTF"],
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "category": "Cancer Treatment",
+      "query": "What are the treatment options for pediatric Hodgkin lymphoma?",
+      "description": "Shows detailed cancer treatment protocol retrieval",
+      "expected_sources": ["NCI PDQ"],
+      "difficulty": "medium"
+    },
+    {
+      "id": 3,
+      "category": "Cardiovascular Health",
+      "query": "What are the risk factors for cardiovascular disease?",
+      "description": "Retrieves comprehensive risk factor information",
+      "expected_sources": ["NHLBI"],
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "category": "Cancer Screening",
+      "query": "What are the screening guidelines for colorectal cancer?",
+      "description": "Another preventive care guideline example",
+      "expected_sources": ["USPSTF"],
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "category": "Chronic Disease Management",
+      "query": "What are the latest recommendations for diabetes management?",
+      "description": "Chronic disease management guidelines",
+      "expected_sources": ["NHLBI", "USPSTF"],
+      "difficulty": "medium"
+    },
+    {
+      "id": 6,
+      "category": "Cancer Treatment",
+      "query": "What are the side effects of chemotherapy for lymphoma?",
+      "description": "Treatment-related information retrieval",
+      "expected_sources": ["NCI PDQ"],
+      "difficulty": "medium"
+    },
+    {
+      "id": 7,
+      "category": "Preventive Care",
+      "query": "What vaccinations are recommended for adults over 65?",
+      "description": "Age-specific preventive care recommendations",
+      "expected_sources": ["USPSTF"],
+      "difficulty": "medium"
+    },
+    {
+      "id": 8,
+      "category": "Cancer Screening",
+      "query": "At what age should I start getting mammograms?",
+      "description": "Patient-friendly query about screening age",
+      "expected_sources": ["USPSTF"],
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "category": "Risk Assessment",
+      "query": "What lifestyle factors increase the risk of cancer?",
+      "description": "General risk factor education",
+      "expected_sources": ["NCI PDQ", "USPSTF"],
+      "difficulty": "easy"
+    },
+    {
+      "id": 10,
+      "category": "Diagnostic Procedures",
+      "query": "What is involved in a lung cancer screening CT scan?",
+      "description": "Procedural information for screening",
+      "expected_sources": ["USPSTF", "NCI PDQ"],
+      "difficulty": "medium"
+    }
+  ],
+  "challenging_queries": [
+    {
+      "id": 11,
+      "query": "Compare treatment efficacy between radiation therapy and chemotherapy for stage II Hodgkin lymphoma",
+      "description": "Complex comparative question",
+      "difficulty": "hard"
+    },
+    {
+      "id": 12,
+      "query": "What are the genetic markers for hereditary breast cancer risk?",
+      "description": "Specialized genetic information",
+      "difficulty": "hard"
+    },
+    {
+      "id": 13,
+      "query": "How do screening recommendations differ for high-risk vs average-risk populations?",
+      "description": "Nuanced guideline comparison",
+      "difficulty": "hard"
+    }
+  ],
+  "edge_cases": [
+    {
+      "id": 14,
+      "query": "asthma",
+      "description": "Single word query - tests basic keyword matching"
+    },
+    {
+      "id": 15,
+      "query": "Tell me everything about cancer",
+      "description": "Overly broad query - tests result relevance"
+    },
+    {
+      "id": 16,
+      "query": "What is the best hospital for cancer treatment in Boston?",
+      "description": "Out-of-scope query - not in guideline data"
+    }
+  ],
+  "showcase_queries": [
+    "What are the current USPSTF recommendations for breast cancer screening?",
+    "What are the treatment options for pediatric Hodgkin lymphoma?",
+    "What are the risk factors for cardiovascular disease?",
+    "What are the screening guidelines for colorectal cancer?",
+    "At what age should I start getting mammograms?"
+  ]
+}

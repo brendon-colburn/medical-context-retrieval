@@ -11,3 +11,7 @@ aiohttp
 numpy
 scipy
 tqdm
+voila
+ipywidgets
+plotly
+pandas

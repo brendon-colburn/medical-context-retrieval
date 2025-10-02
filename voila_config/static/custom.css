@@ -1,0 +1,225 @@
+/* Healthcare Professional Theme for Voilà Demo */
+
+:root {
+    --primary-color: #0066cc;
+    --secondary-color: #667eea;
+    --accent-color: #28a745;
+    --background-color: #f5f7fa;
+    --card-background: #ffffff;
+    --text-color: #333333;
+    --border-color: #e1e4e8;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Header styling */
+.jp-Notebook {
+    background-color: var(--background-color);
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Card styling for results */
+.jp-RenderedHTMLCommon {
+    font-size: 16px;
+}
+
+/* Button styling */
+.widget-button {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.widget-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.widget-button:active {
+    transform: translateY(0);
+}
+
+/* Input widgets */
+.widget-textarea textarea,
+.widget-text input {
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.widget-textarea textarea:focus,
+.widget-text input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+/* Slider styling */
+.widget-slider .ui-slider {
+    background: var(--border-color);
+    border-radius: 10px;
+    height: 8px;
+}
+
+.widget-slider .ui-slider-handle {
+    background: var(--primary-color);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    top: -6px;
+    border: 3px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Hide code cells in Voilà */
+.jp-Cell.jp-CodeCell {
+    background-color: transparent;
+}
+
+.jp-Cell-inputWrapper {
+    display: none;
+}
+
+/* Markdown headings */
+h1, h2, h3, h4 {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 2.5em;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 0.3em;
+}
+
+h2 {
+    font-size: 2em;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.3em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+/* Links */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* Output areas */
+.jp-OutputArea-output {
+    background-color: transparent;
+}
+
+/* Loading animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .jp-Notebook {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .widget-button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Result cards enhancement */
+.result-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.result-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Badge styling */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.badge-success {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.badge-danger {
+    background-color: #dc3545;
+    color: white;
+}
