@@ -151,6 +151,7 @@ def _slice_for_header(text: str) -> str:
 # -------- Core Logic ---------
 async def _generate_header(llm: Callable[[List[Dict]], Awaitable[str]], chunk_payload: Dict, limiter: AsyncRateLimiter, retries: int = 4):
     attempt = 0
+    last_error = None
     while attempt < retries:
         await limiter.acquire()
         try:
@@ -177,14 +178,24 @@ async def _generate_header(llm: Callable[[List[Dict]], Awaitable[str]], chunk_pa
             ]
             header = await llm(messages)
             header = header.replace("\n", " ").strip()
+
+            # If LLM returned empty/whitespace, treat as failure and retry
+            if not header:
+                raise ValueError("LLM returned empty header")
+
             if len(header) > HEADER_MAX_CHARS:
                 header = header[: HEADER_MAX_CHARS - 3].rstrip() + "..."
             return header
         except Exception as e:  # pragma: no cover - network variability
+            last_error = e
             backoff = (2 ** attempt) + random.uniform(0, 1)
             await asyncio.sleep(backoff)
             attempt += 1
-    return f"Medical content from {chunk_payload.get('section_path','Section')}"
+
+    # Log the failure before returning fallback
+    section = chunk_payload.get('section_path', 'Section')
+    print(f"⚠️  Header generation failed after {retries} attempts for {section}: {last_error}", flush=True)
+    return f"Medical content from {section}"
 
 async def generate_headers(
     documents: Iterable[Document],
@@ -262,6 +273,7 @@ async def generate_headers(
                         doc_id=doc_ref.doc_id,
                         doc_title=doc_ref.title,
                         raw_chunk=payload_ref['text'],
+                        chunk_index=idx,
                         ctx_header=header,
                         augmented_chunk=augmented,
                         section_path=payload_ref.get('section_path',''),
@@ -365,8 +377,84 @@ async def azure_chat_completion(messages: List[Dict], model: str | None = None):
 
 __version__ = "0.2.0-progress-callback"
 
+
+class ContextualHeaderGenerator:
+    """Synchronous wrapper for contextual header generation."""
+
+    def __init__(self, llm_func=None):
+        """Initialize the header generator.
+
+        Args:
+            llm_func: Optional LLM function. If None, uses azure_chat_completion.
+        """
+        self.llm_func = llm_func or azure_chat_completion
+
+    def generate_headers_batch(self, chunks: List[Chunk], batch_size: int = BATCH_SIZE) -> List[Chunk]:
+        """Generate contextual headers for a batch of chunks (synchronous).
+
+        Args:
+            chunks: List of Chunk objects (already chunked)
+            batch_size: Number of chunks to process in parallel
+
+        Returns:
+            List of Chunk objects with ctx_header filled in
+        """
+        # For already-chunked data, we need to reconstruct documents
+        # and pass them to generate_headers which will re-chunk internally
+        # This is not ideal but matches the existing API
+
+        # Group chunks by document
+        doc_map = {}
+        for chunk in chunks:
+            if chunk.doc_id not in doc_map:
+                doc_map[chunk.doc_id] = {
+                    'doc': Document(
+                        doc_id=chunk.doc_id,
+                        title=chunk.doc_title,
+                        content="",  # Will be built from chunks
+                        source_url=chunk.source_url
+                    ),
+                    'chunks': []
+                }
+            doc_map[chunk.doc_id]['chunks'].append(chunk)
+
+        # Reconstruct document content from chunks
+        documents = []
+        for doc_data in doc_map.values():
+            # Sort chunks by index and concatenate
+            sorted_chunks = sorted(doc_data['chunks'], key=lambda c: c.chunk_index)
+            content = "\n\n".join(c.raw_chunk for c in sorted_chunks)
+            doc_data['doc'].content = content
+            documents.append(doc_data['doc'])
+
+        # Run async function in event loop
+        # Use nest_asyncio to allow nested event loops in Jupyter
+        try:
+            import nest_asyncio
+            nest_asyncio.apply()
+        except ImportError:
+            pass
+
+        try:
+            loop = asyncio.get_event_loop()
+        except RuntimeError:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+
+        result_chunks = loop.run_until_complete(
+            generate_headers(
+                documents=documents,
+                llm=self.llm_func,
+                batch_size=batch_size
+            )
+        )
+
+        return result_chunks
+
+
 __all__ = [
     "generate_headers",
     "azure_chat_completion",
+    "ContextualHeaderGenerator",
     "__version__",
 ]
