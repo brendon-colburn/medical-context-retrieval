@@ -205,6 +205,20 @@ experiment_*.py
 temp_*.py
 scratch_*.py
 
+# Diagnostic and admin scripts
+diagnose_*.py
+investigate_*.py
+check_*.py
+deep_check.py
+FIX_*.py
+admin_*.py
+
+# Playwright MCP
+.playwright-mcp/
+
+# Data pilot PDFs (large files)
+data_pilot/pdfs/
+
 # Old versions
 *_old.*
 *_backup.*
