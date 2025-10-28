@@ -173,6 +173,8 @@ $RECYCLE.BIN/
 *.log
 logs/
 debug/
+debug-screenshots/
+screenshots/
 trace/
 
 # =============================================================================
@@ -204,14 +206,17 @@ poetry.lock
 experiment_*.py
 temp_*.py
 scratch_*.py
+*_temp.py
+*_temp.py.py
 
-# Diagnostic and admin scripts
+# Diagnostic and admin scripts (keep admin.ipynb but ignore temp Python versions)
 diagnose_*.py
 investigate_*.py
 check_*.py
 deep_check.py
 FIX_*.py
-admin_*.py
+admin_temp*.py
+fix_*.py
 
 # Playwright MCP
 .playwright-mcp/
@@ -229,6 +234,9 @@ output/
 results/
 plots/
 figures/
+
+# Windows-incompatible files (files with colons, etc.)
+*:*
 
 # =============================================================================
 # Add custom patterns below
