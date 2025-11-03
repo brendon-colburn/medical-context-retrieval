@@ -1,6 +1,24 @@
 # Quick Start Guide
 
-## 🚀 Launch Demo in 3 Steps
+## � Prerequisites
+
+### Configure Environment Variables
+```bash
+# Copy the sample environment file
+cp .env.example .env
+
+# Edit .env with your Azure OpenAI credentials
+# - AZURE_OPENAI_ENDPOINT (your Azure OpenAI service URL)
+# - AZURE_OPENAI_API_KEY (your API key)
+# - AOAI_EMBED_MODEL (your embedding model deployment name)
+# - AOAI_CHAT_MODEL (your chat model deployment name)
+```
+
+**📝 Get Azure OpenAI credentials**: See `.env.example` for detailed setup instructions.
+
+---
+
+## �🚀 Launch Demo in 3 Steps
 
 ### Step 1: Verify Setup
 ```bash

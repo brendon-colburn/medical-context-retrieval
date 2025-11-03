@@ -93,11 +93,13 @@ medical-context-retrieval/
    pip install -r requirements.txt
    ```
 
-2. **Ensure your `.env` file contains Azure OpenAI credentials:**
-   ```
-   AZURE_OPENAI_API_KEY=your_key_here
-   AZURE_OPENAI_ENDPOINT=your_endpoint_here
-   AZURE_OPENAI_DEPLOYMENT=your_deployment_name
+2. **Configure your environment variables:**
+   ```bash
+   # Copy the sample environment file
+   cp .env.example .env
+   
+   # Edit .env with your actual Azure OpenAI credentials
+   # See .env.example for detailed instructions and all available settings
    ```
 
 3. **Launch the demo:**
