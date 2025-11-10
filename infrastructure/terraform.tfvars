@@ -19,18 +19,16 @@ additional_tags = {
 deploy_infrastructure = true
 deploy_private_network = false  # Set to true will cause Container App Environment to use a premium SKU
 deploy_ai_foundry_instances = true
+deploy_ai_model_deployments = true
 deploy_container_app_environment = true  # Azure Front Door will not be created when set to false
 deploy_container_app_helloworld = true    # ignored if deploy_container_app_environment is false
 destroy_ai_foundry_instances = false      # explicit setting to destroy AI Foundry instances
-deploy_ai_model_deployments = false
 
 # Log Analytics Configuration
 use_existing_log_analytics                 = true
 existing_log_analytics_workspace_name      = "onemtcww"
 existing_log_analytics_resource_group_name = "onemtcww-oms"
 log_analytics_subscription_id              = "595a74d5-5d8a-421d-b364-979ba24a6489" # Leave empty if same subscription, or specify different subscription ID
-log_analytics_sku                          = "PerGB2018"
-log_analytics_retention_days               = 90
 
 # Key Vault Configuration
 key_vault_sku                       = "standard"
@@ -44,19 +42,16 @@ storage_account_replication_type = "LRS"
 
 # Cosmos DB Configuration
 cosmos_db_consistency_level = "Session"
-cosmos_db_throughput        = 400
-cosmos_db_database_id             = "sustineo"  # don't change this value
-# cosmos_db_container_id            = "VoiceConfiguration" # don't change this value
-# cosmos_db_container_partition_key = "/id" # don't change this value
+cosmos_db_database_id             = "medical-ctx-rag"  # don't change this value
 
 cosmos_db_containers = [
     {
-      name          = "VoiceConfiguration"
+      name          = "Configuration1"
       partition_key = "/id"
       throughput    = 400
     },
     {
-      name          = "DesignConfigurations"
+      name          = "Configuration2"
       partition_key = "/id"
       throughput    = 400
     }
@@ -76,23 +71,6 @@ container_app_target_port  = 80
 container_registry_sku           = "Basic"
 container_registry_admin_enabled = true
 
-# OpenAI Configuration
-#openai_location                      = "West US 2"
-openai_sku_name                      = "S0"
-openai_public_network_access_enabled = true
-#deploy_openai_gpt4                   = true # UNUSED
-#openai_gpt4_deployment_name          = "gpt-4" # UNUSED
-#openai_gpt4_model_name               = "gpt-4o-mini-realtime-preview" # UNUSED
-#openai_gpt4_model_version            = "2024-12-17" # UNUSED
-#openai_gpt4_capacity                 = 4 # UNUSED
-
-# AI Model Deployments
-# deploy_gpt4o_mini_realtime = true
-# deploy_gpt_image_model     = true
-# deploy_sora_model          = false # Set to true when you have preview access
-
 # AI Foundry Configuration
-aif_location1 = "westus3"
-aif_location2 = "swedencentral"
-#aif_location2 = "eastus2"
+aif_location1 = "eastus2"
 
