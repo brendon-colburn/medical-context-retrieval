@@ -1,4 +1,4 @@
-# Terraform Variables assignment for the Zava Demo Stage1-Base deployment
+# Terraform Variables assignment for the Medical Context RAG deployment
 # Copy this file to terraform.tfvars and customize the values for your environment
 
 # Core Configuration
