@@ -2,14 +2,19 @@
 # Copy this file to terraform.tfvars and customize the values for your environment
 
 # Core Configuration
-organization_prefix = "MedRag"  # all your resources will be prefixed with this value
-environment         = "dev"    # make sure it matches with the terraform workspace you set
-location            = "westus3"
+organization_prefix = "MedCtx"  # all your resources will be prefixed with this value
+environment         = "demo"    # make sure it matches with the terraform workspace you set
+location            = "eastus2"
+
+# Resource Group Configuration
+use_existing_resource_group    = true                    # Set to true to use existing RG
+existing_resource_group_name   = "EXP-HLS-MedicalContext-RG"                       # Replace with actual RG name if using existing
+
 
 # Additional SFI tags for all resources
 additional_tags = {
-  "Lifecycle"   = "dev"
-  "CreatedDate" = "2025-11-09"
+  "Lifecycle"   = "demo"
+  "CreatedDate" = "2025-11-10"
   "CreatedBy"   = "paulwu@onemtc.net"
   "Owner"       = "paulwu@onemtc.net"
   "RGMonthlyCost" = "1"
@@ -18,11 +23,13 @@ additional_tags = {
 # Deployment Flags
 deploy_infrastructure = true
 deploy_private_network = false  # Set to true will cause Container App Environment to use a premium SKU
-deploy_ai_foundry_instances = true
-deploy_ai_model_deployments = true
+deploy_ai_foundry_instances = false
+deploy_ai_model_deployments = false
 deploy_container_app_environment = true  # Azure Front Door will not be created when set to false
 deploy_container_app_helloworld = true    # ignored if deploy_container_app_environment is false
+deploy_ai_search = true                   # Deploy Azure AI Search service
 destroy_ai_foundry_instances = false      # explicit setting to destroy AI Foundry instances
+
 
 # Log Analytics Configuration
 use_existing_log_analytics                 = true
