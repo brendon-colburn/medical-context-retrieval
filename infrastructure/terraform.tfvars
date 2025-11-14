@@ -28,6 +28,7 @@ deploy_ai_model_deployments = false
 deploy_container_app_environment = true  # Azure Front Door will not be created when set to false
 deploy_container_app_helloworld = true    # ignored if deploy_container_app_environment is false
 deploy_ai_search = true                   # Deploy Azure AI Search service
+deploy_azure_frontdoor = false            # Deploy Azure Front Door (set true when public endpoint required)
 destroy_ai_foundry_instances = false      # explicit setting to destroy AI Foundry instances
 
 
