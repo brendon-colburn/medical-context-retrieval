@@ -36,14 +36,14 @@ aif_location1 = "eastus2"
 
 # AI Foundry Configuration
 use_existing_ai_foundry_project = true
-existing_ai_foundry_project = "/subscriptions/a7716bc3-0b59-45ac-8f56-c664a9ccdccf/resourceGroups/EXP-SharedAIServices-RG/providers/Microsoft.CognitiveServices/accounts/SharedAIFoundry"
-existing_ai_foundry_project_subscription = "a7716bc3-0b59-45ac-8f56-c664a9ccdccf" # Leave empty if same subscription, or specify different subscription ID
+existing_ai_foundry_id = "/subscriptions/a7716bc3-0b59-45ac-8f56-c664a9ccdccf/resourceGroups/EXP-SharedAIServices-RG/providers/Microsoft.CognitiveServices/accounts/SharedAIFoundry"
+existing_ai_foundry_subscription_id = "a7716bc3-0b59-45ac-8f56-c664a9ccdccf" # Leave empty if same subscription, or specify different subscription ID
 
 # Log Analytics Configuration
 use_existing_log_analytics                 = true
 existing_log_analytics_workspace_name      = "onemtcww"
 existing_log_analytics_resource_group_name = "onemtcww-oms"
-log_analytics_subscription_id              = "595a74d5-5d8a-421d-b364-979ba24a6489" # Leave empty if same subscription, or specify different subscription ID
+existing_log_analytics_subscription_id     = "595a74d5-5d8a-421d-b364-979ba24a6489" # Leave empty if same subscription, or specify different subscription ID
 
 # Key Vault Configuration
 key_vault_sku                       = "standard"
