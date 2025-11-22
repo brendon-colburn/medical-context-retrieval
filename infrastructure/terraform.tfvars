@@ -31,6 +31,13 @@ deploy_ai_search = true                   # Deploy Azure AI Search service
 deploy_azure_frontdoor = false            # Deploy Azure Front Door (set true when public endpoint required)
 destroy_ai_foundry_instances = false      # explicit setting to destroy AI Foundry instances
 
+# AI Foundry Configuration
+aif_location1 = "eastus2"
+
+# AI Foundry Configuration
+use_existing_ai_foundry_project = true
+existing_ai_foundry_project = "/subscriptions/a7716bc3-0b59-45ac-8f56-c664a9ccdccf/resourceGroups/EXP-SharedAIServices-RG/providers/Microsoft.CognitiveServices/accounts/SharedAIFoundry"
+existing_ai_foundry_project_subscription = "a7716bc3-0b59-45ac-8f56-c664a9ccdccf" # Leave empty if same subscription, or specify different subscription ID
 
 # Log Analytics Configuration
 use_existing_log_analytics                 = true
@@ -69,8 +76,8 @@ cosmos_db_containers = [
 # Container App Configuration
 container_app_image = "nginxdemos/hello:latest"
 #container_app_image        = "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
-container_app_cpu          = 0.25
-container_app_memory       = "0.5Gi"
+container_app_cpu          = 2.0
+container_app_memory       = "4Gi"
 container_app_min_replicas = 1
 container_app_max_replicas = 10
 container_app_target_port  = 80
@@ -79,6 +86,5 @@ container_app_target_port  = 80
 container_registry_sku           = "Basic"
 container_registry_admin_enabled = true
 
-# AI Foundry Configuration
-aif_location1 = "eastus2"
+
 
